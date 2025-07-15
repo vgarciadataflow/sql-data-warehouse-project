@@ -7,7 +7,8 @@ ETL Pipelines: Extracting, transforming, and loading data from source systems in
 Data Modeling: Developing fact and dimension tables optimized for analytical queries.
 Analytics & Reporting: Creating SQL-based reports and dashboards for actionable insights.
 
-I am completing this project to develop my skills in data engineering. The project was developed by Baraa Khatib Salkini, also known as Data With Baraa. 
+About Me:
+I am currently a data analyst and am completing this project to develop my skills in data engineering. The project was developed by Baraa Khatib Salkini, also known as Data With Baraa. 
 
 # sql-data-warehouse-project
 Building a modern warehouse with SQL Server, including ETL processes, data modeling, and analytics. 
