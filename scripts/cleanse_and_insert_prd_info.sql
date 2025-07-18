@@ -67,6 +67,8 @@ CREATE TABLE silver.crm_prd_info (
 
 --Inserting the cleansed bronze prod_info table into the silver schema under silver.crm_prd_info
 
+TRUNCATE TABLE silver.crm_prd_info;
+PRINT '>> Inserting Data Into: silver.crm_prd_info';
 INSERT INTO silver.crm_prd_info (
 	prd_id,
 	cat_id,
