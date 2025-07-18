@@ -3,8 +3,8 @@
 SELECT
 prd_id,
 prd_key,
-REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,
-SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,
+REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id, --Extract category ID
+SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,   --Extract product key, used the LEN function because the length of the string varied
 prd_nm,
 ISNULL(prd_cost,0) AS prd_cost,
 CASE
@@ -18,7 +18,7 @@ CAST (prd_start_dt AS DATE) AS prd_start_dt,
 CAST(
     DATEADD(DAY, -1, LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt))
     AS DATE
-  ) AS prd_end_dt
+  ) AS prd_end_dt   -- Calculates end date as one day before the next start date
 FROM bronze.crm_prd_info;
 
 -- Was checking how primary keys from tables were related to see how to perform split 
