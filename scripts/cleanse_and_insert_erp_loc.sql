@@ -27,6 +27,8 @@ FROM bronze.erp_loc_a101
 
 --Insert into silver layer
 
+TRUNCATE TABLE silver.erp_loc_a101;
+PRINT '>> Inserting Data Into: silver.erp_loc_a101';
 INSERT INTO silver.erp_loc_a101
 (cid, cntry)
 SELECT
