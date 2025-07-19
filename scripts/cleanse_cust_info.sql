@@ -32,6 +32,7 @@ WHERE cst_firstname != TRIM(cst_firstname);
 
 --After checking each column, add the trim function to the needed columns
 
+PRINT '>> Truncating Table: silver.
 SELECT
 cst_id,
 cst_key,
