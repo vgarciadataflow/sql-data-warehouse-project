@@ -32,7 +32,20 @@ WHERE cst_firstname != TRIM(cst_firstname);
 
 --After checking each column, add the trim function to the needed columns
 
-PRINT '>> Truncating Table: silver.
+--Truncating and Inserting Table 
+
+PRINT '>> Truncating Table: silver.crm_cust_info';
+TRUNCATE TABLE silver.crm_cust_info;
+PRINT '>> Inserting Data Into: silver.crm_cust_info';
+INSERT INTO silver.crm_cust_info (
+	cst_id,
+	cst_key,
+	cst_firstname,
+	cst_lastname,
+	cst_marital_status,
+	cst_gndr,
+	cst_create_date
+)
 SELECT
 cst_id,
 cst_key,
