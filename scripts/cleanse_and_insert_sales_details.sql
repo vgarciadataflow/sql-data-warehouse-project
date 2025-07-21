@@ -1,3 +1,23 @@
+/*
+===================================================================
+Quality Checks
+===================================================================
+Script Purpose:
+   This script performs various quality checks for data consistency, 
+   accuracy, and standardization across the 'silver' schema. It includes
+   checks for:
+    -Null or duplicate primary keys.
+    -Unwanted spaces in string fields.
+    -Data standardization and consistency.
+    -Invalid date ranges and orders.
+    -Data consistency between related fields.
+
+Usage Notes:
+    -Run these checks after loading data into Silver layer
+    -Investigate and resolve any discrepancies found during the checks.
+===================================================================
+*/
+
 SELECT 
 sls_ord_num,
 sls_prd_key,
