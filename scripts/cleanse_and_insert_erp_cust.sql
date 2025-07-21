@@ -15,7 +15,8 @@ Script Purpose:
 Usage Notes:
     -Run these checks after loading data into Silver layer
     -Investigate and resolve any discrepancies found during the checks.
-=====
+===================================================================
+*/
 
 SELECT
 CASE WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, len(cid))
