@@ -21,8 +21,9 @@ Usage Example:
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN 
-	DECLARE @start_time	DATETIME, @end_time	DATETIME;
+	DECLARE @start_time	DATETIME, @end_time	DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME;
 	BEGIN TRY
+	SET @batch_start_time = GETDATE();
 		PRINT '===================================';
 		PRINT 'Loading Silver Layer';
 		PRINT '===================================';
@@ -31,6 +32,7 @@ BEGIN
 		PRINT 'Cleansing CRM Tables';
 		PRINT '-----------------------------------';
 
+		-- Loading silver.crm_cust_info
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.crm_cust_info';
 		TRUNCATE TABLE silver.crm_cust_info;
@@ -69,7 +71,7 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>>-----------------'
 
-
+		--Loading silver.crm_prd_info
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.crm_prd_info';
 		TRUNCATE TABLE silver.crm_prd_info;
@@ -107,7 +109,7 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>>-----------------'
 
-
+		--Loading silver.crm_sales_details
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.crm_sales_details';
 		TRUNCATE TABLE silver.crm_sales_details;
@@ -155,6 +157,7 @@ BEGIN
 		PRINT 'Cleansing ERP Tables';
 		PRINT '-----------------------------------';
 		
+		--Loading silver.erp_cust_az12
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.erp_cust_az12';
 		TRUNCATE TABLE silver.erp_cust_az12;
@@ -177,6 +180,7 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>>-----------------'
 
+		--Loading silver.erp_loc_a101
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.erp_loc_a101';
 		TRUNCATE TABLE silver.erp_loc_a101;
@@ -195,6 +199,7 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>>-----------------'
 
+		--Loading silver.erp_px_cat_g1v2
 		SET @start_time = GETDATE();
 		PRINT '>> Truncating Table: silver.erp_px_cat_g1v2';
 		TRUNCATE TABLE silver.erp_px_cat_g1v2;
@@ -211,6 +216,13 @@ BEGIN
 		SET @end_time = GETDATE();
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>>-----------------'
+	
+	SET @batch_end_time = GETDATE();
+	PRINT '================================'
+	PRINT 'Loading Silver Layer is Completed';
+	PRINT '* Total Load Duration:  ' + CAST(DATEDIFF(SECOND, @batch_start_time,@batch_end_time) AS NVARCHAR) + 'seconds';
+	PRINT '================================'
+
 	END TRY
 	BEGIN CATCH
 		PRINT '================================';
