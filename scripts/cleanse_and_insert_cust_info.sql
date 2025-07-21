@@ -13,9 +13,10 @@ Script Purpose:
     -Data consistency between related fields.
 
 Usage Notes:
-    -Run these checks 
-
-
+    -Run these checks after loading data into Silver layer
+    -Investigate and resolve any discrepancies found during the checks.
+===================================================================
+*/
 
 --Check for primary key duplicates and/or null values
 --Expectation: No results
