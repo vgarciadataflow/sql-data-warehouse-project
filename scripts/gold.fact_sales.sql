@@ -1,3 +1,20 @@
+/*
+======================================================================
+DDL Script: Create Gold View: fact_sales
+======================================================================
+Script Purpose:
+ This script creates views for the Gold layer in the data warehouse.
+ The Gold layer represents the final dimension and fact tables (Star
+ Schema).
+
+ Each view performs transformations and combines data from the Silver
+ layer to produce a clean, enriched, and business-ready dataset.
+
+Usage:
+  -These views can be queried directly for analytics and reporting.
+======================================================================
+*/
+
 --Because this is transactional data, it is a fact table.
 --We are going to use the dimension's surrogate keys instead of IDs
 --to easily connect facts with dimensions. So we replace the sls_prd_key and sls_cust_key
