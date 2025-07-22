@@ -24,6 +24,9 @@ Usage:
 --Create the object (view)
 --Check the quality of the view
 
+IF OBJECT_ID('gold.dim_customers', 'V') IS NOT NULL
+    DROP VIEW gold.dim_customers;
+GO
 CREATE VIEW gold.dim_customers AS
 SELECT
 	ROW_NUMBER() OVER (ORDER BY cst_id) AS customer_key,
